@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_tutorial/http_example/pages/my_homepage.dart';
+import 'package:flutter_tutorial/travel_app/pages/welcome_page.dart';
 
 import 'http_example/cubit/internet_cubit/internet_cubit.dart';
 
@@ -17,7 +18,7 @@ class MyApp extends StatelessWidget {
       create: (context)=> InternetCubit(),
       child: const MaterialApp(
         title: "Flutter App",
-        home: MyHomePage(),
+        home: WelcomePage(),
       ),
     );
   }
