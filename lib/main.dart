@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_tutorial/http_example/pages/my_homepage.dart';
 import 'package:flutter_tutorial/travel_app/pages/welcome_page.dart';
@@ -16,10 +17,24 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context)=> InternetCubit(),
-      child: const MaterialApp(
-        title: "Flutter App",
-        home: WelcomePage(),
-      ),
+      child: MaterialApp(
+        title: 'Flutter Demo',
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+          appBarTheme: const AppBarTheme(
+            iconTheme: IconThemeData(color: Colors.black),
+            color: Colors.transparent,
+            foregroundColor: Colors.black,
+            systemOverlayStyle: SystemUiOverlayStyle(
+              // Status bar color
+              statusBarColor: Colors.transparent,
+              statusBarIconBrightness: Brightness.dark,
+              statusBarBrightness: Brightness.light,
+            ),
+          ),
+        ),
+        home: const WelcomePage(),
+      )
     );
   }
 }

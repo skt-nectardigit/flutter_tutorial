@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_tutorial/travel_app/misc/colors.dart';
+import 'package:flutter_tutorial/travel_app/pages/main_page.dart';
 import 'package:flutter_tutorial/travel_app/widgets/app_large_text.dart';
 import 'package:flutter_tutorial/travel_app/widgets/app_text.dart';
+import 'package:flutter_tutorial/travel_app/widgets/responsive_button.dart';
 
 class WelcomePage extends StatefulWidget {
   const WelcomePage({Key? key}) : super(key: key);
@@ -55,9 +57,15 @@ class _WelcomePageState extends State<WelcomePage> {
                       ),
                       AppText(
                         text: details[index],
-                        size: 15,
+                        size: 18,
                         color: AppColors.textColor1,
-                      )
+                      ),
+                      const SizedBox(
+                        height: 60,
+                      ),
+                      GestureDetector(onTap: (){
+                        Navigator.push(context, MaterialPageRoute(builder: (context)=>const MainPage()));
+                      }, child: ResponsiveButton(text: "Hello",))
                     ],
                   ),
                 ],
