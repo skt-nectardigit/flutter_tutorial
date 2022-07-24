@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_tutorial/travel_app/cubit/app_cubit.dart';
 import 'package:flutter_tutorial/travel_app/misc/colors.dart';
 import 'package:flutter_tutorial/travel_app/pages/main_page.dart';
 import 'package:flutter_tutorial/travel_app/widgets/app_large_text.dart';
@@ -33,7 +35,7 @@ class _WelcomePageState extends State<WelcomePage> {
         scrollDirection: Axis.vertical,
         itemBuilder: (context, index) {
           return Container(
-            padding: const EdgeInsets.only(left: 10),
+              padding: const EdgeInsets.only(left: 10),
               height: double.maxFinite,
               width: double.maxFinite,
               decoration: BoxDecoration(
@@ -63,9 +65,13 @@ class _WelcomePageState extends State<WelcomePage> {
                       const SizedBox(
                         height: 60,
                       ),
-                      GestureDetector(onTap: (){
-                        Navigator.push(context, MaterialPageRoute(builder: (context)=>const MainPage()));
-                      }, child: ResponsiveButton(text: "Hello",))
+                      GestureDetector(
+                          onTap: () {
+                            BlocProvider.of<AppCubit>(context).getPlacesdata();
+                            // ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Hello")));
+                            BlocProvider.of<AppCubit>(context).checkInternet();
+                          },
+                          child: ResponsiveButton())
                     ],
                   ),
                 ],

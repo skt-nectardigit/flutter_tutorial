@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_tutorial/http_example/pages/my_homepage.dart';
-import 'package:flutter_tutorial/travel_app/pages/welcome_page.dart';
+import 'package:flutter_tutorial/travel_app/cubit/app_cubit.dart';
+import 'package:flutter_tutorial/travel_app/cubit/app_logic.dart';
+import 'package:flutter_tutorial/travel_app/data_services/api_client.dart';
 
 import 'http_example/cubit/internet_cubit/internet_cubit.dart';
 
@@ -18,6 +19,7 @@ class MyApp extends StatelessWidget {
     return BlocProvider(
       create: (context)=> InternetCubit(),
       child: MaterialApp(
+        debugShowCheckedModeBanner: false,
         title: 'Flutter Demo',
         theme: ThemeData(
           primarySwatch: Colors.blue,
@@ -33,7 +35,8 @@ class MyApp extends StatelessWidget {
             ),
           ),
         ),
-        home: const WelcomePage(),
+        home: BlocProvider<AppCubit>(create:(context)=>AppCubit(apiClient: ApiClient()),
+        child: AppLogic(),),
       )
     );
   }
