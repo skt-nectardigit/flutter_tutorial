@@ -9,10 +9,11 @@ class AppText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      alignment: Alignment.center,
       width: 300,
       child: Text(
         text,
-        style: TextStyle(fontSize: size, color: color),
+        style: TextStyle(fontSize: size, color: color,),
       ),
     );
   }
